@@ -1,0 +1,173 @@
+{
+    "北京": {
+        "attractions": [
+            {"name": "北京天文馆", "description": "国家级天文科普教育中心，展示宇宙奥秘和天文科技，提供沉浸式天文探索体验", "image": "https://example.com/beijing-astronomy-museum.jpg"},
+            {"name": "中国科技馆", "description": "国家级科普教育基地，展示中国科技创新成就，提供互动性强的科学体验", "image": "https://example.com/beijing-china-science-museum.jpg"},
+            {"name": "天安门广场", "description": "中国政治中心和重要的历史象征", "image": "https://example.com/tiananmen.jpg"},
+            {"name": "军事博物馆", "description": "展示中国军事历史和现代国防成就的重要场所，收藏丰富的军事文物", "image": "https://example.com/beijing-military-museum.jpg"},
+            {"name": "国家博物馆", "description": "展示中国历史文化的重要场所", "image": "https://example.com/museum.jpg"}
+        ]
+    },
+    "上海": {
+        "attractions": [
+            {"name": "外滩", "description": "上海最著名的城市景观，展现近代建筑风貌", "image": "https://example.com/waitan.jpg"},
+            {"name": "东方明珠", "description": "上海标志性建筑，可以俯瞰整个城市", "image": "https://example.com/dongfangmingzhu.jpg"},
+            {"name": "迪士尼乐园", "description": "世界知名主题公园，适合儿童游玩", "image": "https://example.com/disneyland.jpg"},
+            {"name": "城隍庙", "description": "传统的中国古老庙宇，充满文化氛围", "image": "https://example.com/chenghuangmiao.jpg"},
+            {"name": "上海野生动物园", "description": "拥有丰富动物种类的大型现代动物园，适合亲子游览", "image": "https://example.com/shanghai-wild-zoo.jpg"}
+        ]
+    },
+    "成都": {
+        "attractions": [
+            {"name": "都江堰", "description": "世界文化遗产，中国古代水利工程的杰出代表，展现中国古代科技智慧", "image": "https://example.com/dujiangyan.jpg"},
+            {"name": "三星堆", "description": "中国古代巴蜀文明的重要考古遗址，展示神秘的古蜀文化", "image": "https://example.com/sanxingdui.jpg"},
+            {"name": "金沙遗址博物馆", "description": "展示古蜀文明的重要考古遗址博物馆，保存和展示珍贵的古蜀文化文物", "image": "https://example.com/chengdu-jinsha-museum.jpg"},
+            {"name": "武侯祠", "description": "三国文化的重要遗址，纪念诸葛亮", "image": "https://example.com/wuhouci.jpg"},
+            {"name": "锦里古街", "description": "展现成都传统生活文化的历史街区", "image": "https://example.com/jinli.jpg"}
+        ]
+    },
+    "杭州": {
+        "attractions": [
+            {"name": "西湖", "description": "中国最美的湖泊，世界文化遗产", "image": "https://example.com/xihu.jpg"},
+            {"name": "灵隐寺", "description": "千年古刹，风景优美", "image": "https://example.com/lingyin.jpg"},
+            {"name": "清河坊", "description": "杭州著名的历史文化街区，保留了宋代风貌的老街", "image": "https://example.com/qinghe-fang.jpg"},
+            {"name": "西湖博物馆", "description": "展示西湖历史文化的重要场所", "image": "https://example.com/xihu-museum.jpg"},
+            {"name": "飞来峰", "description": "灵隐景区内的著名石刻景点", "image": "https://example.com/feilaifeng.jpg"}
+        ]
+    },
+    "苏州": {
+        "attractions": [
+            {"name": "拙政园", "description": "中国最著名的园林之一，世界文化遗产", "image": "https://example.com/zhuozheng.jpg"},
+            {"name": "虎丘", "description": "历史悠久的名胜古迹", "image": "https://example.com/huqiu.jpg"},
+            {"name": "苏州园林博物馆", "description": "展示苏州园林历史的重要场所", "image": "https://example.com/garden-museum.jpg"},
+            {"name": "盘门", "description": "苏州古城墙的重要遗迹", "image": "https://example.com/panmen.jpg"},
+            {"name": "周庄", "description": "江南水乡最著名的古镇，被誉为'中国第一水乡'", "image": "https://example.com/zhouzhuang.jpg"}
+        ]
+    },
+    "西安": {
+        "attractions": [
+            {"name": "兵马俑", "description": "世界八大奇迹之一，秦始皇陵墓兵马俑博物馆", "image": "https://example.com/bingmayong.jpg"},
+            {"name": "碑林博物馆", "description": "收藏众多历史石碑的著名博物馆，展示中国书法和历史文化", "image": "https://example.com/beilin-museum.jpg"},
+            {"name": "陕西历史博物馆", "description": "中国最大的省级历史博物馆，展示丰富的陕西历史文化遗产", "image": "https://example.com/shaanxi-history-museum.jpg"},
+            {"name": "回民街", "description": "品尝西安美食的著名美食街", "image": "https://example.com/huimingjie.jpg"},
+            {"name": "钟鼓楼", "description": "古代城市中心，标志性建筑", "image": "https://example.com/zhonggulou.jpg"}
+        ]
+    },
+    "无锡": {
+        "attractions": [
+            {"name": "太湖", "description": "中国第三大淡水湖，风景优美", "image": "https://example.com/taihu.jpg"},
+            {"name": "灵山大佛", "description": "世界最高的青铜坐佛", "image": "https://example.com/lingshan-buddha.jpg"},
+            {"name": "古运河历史文化街区", "description": "保存完好的江南水乡历史文化街区，展现无锡传统建筑和生活风貌", "image": "https://example.com/wuxi-ancient-canal.jpg"},
+            {"name": "梵宫", "description": "无锡著名的佛教文化建筑，融合现代建筑与传统佛教艺术", "image": "https://example.com/fanggong.jpg"},
+            {"name": "梅园", "description": "以梅花闻名的园林景点", "image": "https://example.com/meiyuan.jpg"}
+        ]
+    },
+    "青岛": {
+        "attractions": [
+            {"name": "融创水世界", "description": "大型现代化水上主题乐园，提供丰富的水上娱乐和休闲体验", "image": "https://example.com/qingdao-rongchuang-waterpark.jpg"},
+            {"name": "青岛森林野生动物园", "description": "现代化野生动物保护和科普教育基地，提供近距离观察和了解野生动物的独特体验", "image": "https://example.com/qingdao-forest-wildlife-zoo.jpg"},
+            {"name": "崂山北九水", "description": "青岛著名的自然风景区，以秀丽的山水景观和独特的地质地貌闻名", "image": "https://example.com/qingdao-laoshan-beijijiushui.jpg"},
+            {"name": "极地海洋世界", "description": "展示极地动物生态和海洋科普的现代化主题公园", "image": "https://example.com/qingdao-polar-ocean-world.jpg"},
+            {"name": "方特梦幻王国", "description": "大型主题游乐园，融合科技、娱乐和奇幻元素，适合全家游玩", "image": "https://example.com/qingdao-fangte-dreamland.jpg"}
+        ]
+    },
+    "济南": {
+        "attractions": [
+            {"name": "山东美术馆", "description": "展示山东艺术发展历程和当代艺术成就的重要文化场所，收藏众多珍贵艺术作品", "image": "https://example.com/jinan-shandong-art-museum.jpg"},
+            {"name": "大明湖", "description": "历史悠久的城市湖泊", "image": "https://example.com/daminghu.jpg"},
+            {"name": "山东博物馆", "description": "展示山东丰富历史文化和自然遗产的重要文化场所，收藏大量珍贵文物", "image": "https://example.com/jinan-shandong-museum.jpg"},
+            {"name": "济南野生动物园", "description": "拥有丰富动物种类的现代化野生动物园，提供亲近自然、了解野生动物的独特体验", "image": "https://example.com/jinan-wild-zoo.jpg"},
+            {"name": "黑虎泉", "description": "另一处著名的泉水景观", "image": "https://example.com/heitigerquan.jpg"}
+        ]
+    },
+    "常州": {
+        "attractions": [
+            {"name": "恐龙园", "description": "世界级主题公园，适合儿童探索恐龙世界", "image": "https://example.com/dinosaur-park.jpg"},
+            {"name": "天宁寺", "description": "历史悠久的佛教寺庙", "image": "https://example.com/tianning-temple.jpg"},
+            {"name": "中国茶文化博物馆", "description": "了解中国茶文化的重要场所", "image": "https://example.com/tea-museum.jpg"},
+            {"name": "淹城野生动物园", "description": "拥有丰富动物种类的现代化动物园，适合亲子游览", "image": "https://example.com/yanchen-wild-zoo.jpg"},
+            {"name": "常州博物馆", "description": "展示常州历史文化的重要场所", "image": "https://example.com/changzhou-museum.jpg"}
+        ]
+    },
+    "大连": {
+        "attractions": [
+            {"name": "俄罗斯风情街", "description": "展现大连独特历史文化底蕴的特色街区，体现俄罗斯建筑风格和文化元素", "image": "https://example.com/dalian-russian-style-street.jpg"},
+            {"name": "老虎滩海洋公园", "description": "世界著名的海洋主题公园", "image": "https://example.com/tiger-beach.jpg"},
+            {"name": "东方威尼斯水城", "description": "融合现代建筑与水乡风情的特色景区，展现独特的城市水景和文化魅力", "image": "https://example.com/dalian-oriental-venice.jpg"},
+            {"name": "发现王国主题公园", "description": "大型现代化主题游乐园，融合科技、娱乐和探险元素，提供全家互动体验", "image": "https://example.com/dalian-discovery-kingdom.jpg"},
+            {"name": "森林动物园", "description": "适合儿童游玩的动物园", "image": "https://example.com/forest-zoo.jpg"}
+        ]
+    },
+    "南通": {
+        "attractions": [
+            {"name": "南通长江沿岸", "description": "展现长江经济带风貌的城市滨水景观，体现南通的自然风光和城市发展", "image": "https://example.com/nantong-yangtze-riverside.jpg"},
+            {"name": "南通农副产品物流中心", "description": "展示现代农业物流体系和农产品交易的重要场所，体现南通农业经济发展特色", "image": "https://example.com/nantong-agricultural-logistics-center.jpg"},
+            {"name": "狼山景区", "description": "风景优美的山地景区", "image": "https://example.com/langshan.jpg"},
+            {"name": "南通科技馆", "description": "适合儿童科普教育的场所", "image": "https://example.com/nantong-science-museum.jpg"},
+            {"name": "启东海滨旅游区", "description": "海边度假胜地，适合亲子游", "image": "https://example.com/qidong-seaside.jpg"}
+        ]
+    },
+    "徐州": {
+        "attractions": [
+            {"name": "云龙湖", "description": "城市中心的大型湖泊景区", "image": "https://example.com/yunlonghu.jpg"},
+            {"name": "钟书阁", "description": "徐州著名的文化地标，集书店、咖啡馆和文化空间于一体的现代阅读空间", "image": "https://example.com/xuzhou-zhongshu-pavilion.jpg"},
+            {"name": "汉画像石艺术馆", "description": "展示徐州独特汉代画像石艺术的重要文化场所，保存了大量珍贵的汉代石刻艺术品", "image": "https://example.com/xuzhou-han-relief-museum.jpg"},
+            {"name": "戏马台", "description": "徐州著名的历史文化遗址，见证了楚汉争霸时期的重要历史场景", "image": "https://example.com/xuzhou-xima-platform.jpg"},
+            {"name": "宝莲寺", "description": "徐州著名的佛教寺庙，历史悠久，建筑精美", "image": "https://example.com/baolian-temple.jpg"}
+        ]
+    },
+    "潍坊": {
+        "attractions": [
+            {"name": "青州古城", "description": "保存完好的历史文化名城", "image": "https://example.com/qingzhou-ancient-city.jpg"},
+            {"name": "潍坊风筝博物馆", "description": "展示中国风筝文化的重要场所", "image": "https://example.com/weifang-kite-museum.jpg"},
+            {"name": "常山文化博物苑", "description": "展示潍坊地方文化历史的重要场所，保存和展示当地丰富的文化遗产", "image": "https://example.com/weifang-changshan-cultural-museum.jpg"},
+            {"name": "白浪河风景区", "description": "城市中的自然景观", "image": "https://example.com/bailang-river.jpg"},
+            {"name": "诸城野生动物园", "description": "拥有丰富动物种类的现代化动物园，适合亲子游览", "image": "https://example.com/zhucheng-wild-zoo.jpg"}
+        ]
+    },
+    "淮安": {
+        "attractions": [
+            {"name": "淮安博物馆", "description": "展示淮安丰富历史文化的重要场所，收藏大量珍贵文物和历史遗迹", "image": "https://example.com/huaian-museum.jpg"},
+            {"name": "周恩来纪念馆", "description": "纪念伟大政治家周恩来的重要场所", "image": "https://example.com/zhou-enlai-memorial.jpg"},
+            {"name": "淮安水浒城", "description": "以水浒传故事为主题的文化景区", "image": "https://example.com/shuihu-city.jpg"},
+            {"name": "西游乐园", "description": "以西游记为主题的大型文化娱乐园，融合神话故事和现代游乐体验", "image": "https://example.com/huaian-xiyou-park.jpg"},
+            {"name": "淮安府署", "description": "保存完好的清代地方行政衙门，展现古代官府建筑风貌", "image": "https://example.com/huaian-government-office.jpg"}
+        ]
+    },
+    "枣庄": {
+        "attractions": [
+            {"name": "台儿庄古城", "description": "保存完好的历史文化名城，抗日战争重要战场", "image": "https://example.com/taierzhuang-ancient-city.jpg"},
+            {"name": "山亭区地质公园", "description": "展示独特地质景观的自然保护区", "image": "https://example.com/shanting-geological-park.jpg"},
+            {"name": "枣庄运河博物馆", "description": "展示运河文化历史的重要博物馆", "image": "https://example.com/zaozhuang-canal-museum.jpg"},
+            {"name": "枣庄市博物馆", "description": "了解枣庄历史文化的重要场所", "image": "https://example.com/zaozhuang-museum.jpg"},
+            {"name": "薛城矿业文化园", "description": "展示矿业历史和文化的主题景区", "image": "https://example.com/xuecheng-mining-park.jpg"}
+        ]
+    },
+    "连云港": {
+        "attractions": [
+            {"name": "海州湾景区", "description": "滨海风景优美的自然景观", "image": "https://example.com/haizhou-bay.jpg"},
+            {"name": "云台山景区", "description": "国家重点风景名胜区，自然景观独特", "image": "https://example.com/yuntai-mountain.jpg"},
+            {"name": "花果山风景区", "description": "神话传说中孙悟空的诞生地", "image": "https://example.com/huaguo-mountain.jpg"},
+            {"name": "连云港海洋博物馆", "description": "展示海洋文化和生态的重要场所", "image": "https://example.com/lianyungang-marine-museum.jpg"},
+            {"name": "灌云石湖湿地公园", "description": "生态保护区，适合亲近自然", "image": "https://example.com/shihu-wetland.jpg"}
+        ]
+    },
+    "淄博": {
+        "attractions": [
+            {"name": "海岱楼", "description": "淄博著名的历史文化建筑，展现了地方特色的建筑艺术和历史风貌", "image": "https://example.com/zibo-haidai-building.jpg"},
+            {"name": "张店齐国故城", "description": "春秋时期齐国的历史遗址", "image": "https://example.com/zhangdian-qi-city.jpg"},
+            {"name": "淄博陶瓷博物馆", "description": "展示陶瓷文化历史的重要场所", "image": "https://example.com/zibo-ceramic-museum.jpg"},
+            {"name": "淄博市博物馆", "description": "了解淄博历史文化的重要场所", "image": "https://example.com/zibo-museum.jpg"},
+            {"name": "柴家庄遗址公园", "description": "新石器时代遗址，展示原始文明", "image": "https://example.com/chaijiazhuang-site.jpg"}
+        ]
+    },
+    "扬州": {
+        "attractions": [
+            {"name": "瘦西湖", "description": "国家5A级景区，以细长优美的湖景和园林艺术闻名", "image": "https://example.com/yangzhou-slimwestlake.jpg"},
+            {"name": "大明寺", "description": "历史悠久的佛教寺庙，保存了丰富的文化遗产", "image": "https://example.com/yangzhou-damingsi.jpg"},
+            {"name": "何园", "description": "江南著名的古典园林，展现精美的园林建筑艺术", "image": "https://example.com/yangzhou-heyuan.jpg"},
+            {"name": "东关街", "description": "保存完好的历史文化街区，展现扬州传统生活风貌", "image": "https://example.com/yangzhou-dongguanjie.jpg"},
+            {"name": "大运河博物馆", "description": "展示大运河历史文化和水运发展的重要文化场所，保护和传承大运河文明", "image": "https://example.com/yangzhou-grand-canal-museum.jpg"}
+        ]
+    }
+}

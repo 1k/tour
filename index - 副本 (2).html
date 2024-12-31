@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国儿童旅游网</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+    
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2196F3;
+            --background-color: #F0F4F8;
+            --text-color: #333;
+            --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.4;
+            padding-top: 60px;
+        }
+
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 5px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.2rem;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 5px 10px !important;
+        }
+
+        .city-section {
+            background-color: white;
+            margin-bottom: 10px;
+            box-shadow: var(--card-shadow);
+            padding: 15px;
+        }
+
+        .city-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .city-header h2 {
+            margin: 0;
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .city-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .attractions-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding-bottom: 10px;
+        }
+
+        .attractions-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .attractions-container::-webkit-scrollbar-thumb {
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 3px;
+        }
+
+        .attraction-card {
+            flex: 0 0 auto;
+            width: 200px;
+            border: none;
+            transition: transform 0.2s ease;
+        }
+
+        .attraction-card:hover {
+            transform: scale(1.05);
+        }
+
+        .attraction-card img {
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .attraction-card .card-body {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .attraction-card .card-title {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .attraction-card .card-text {
+            font-size: 0.8rem;
+            color: #6c757d;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    
+    
+        /* 渐变背景 */
+        body {
+            background: linear-gradient(135deg, #f6f8f9 0%, #e5ebee 100%);
+            background-attachment: fixed;
+        }
+
+        /* 导航栏优化 */
+        .navbar {
+            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-link:hover {
+            color: white !important;
+            transform: scale(1.05);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* 城市区块优化 */
+        .city-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 20px;
+        }
+        .city-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+        }
+        .city-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        /* 景点卡片优化 */
+        .attractions-container {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: thin;
+            scrollbar-color: #4facfe #e0e0e0;
+        }
+        .attractions-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .attractions-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .attractions-container::-webkit-scrollbar-thumb {
+            background: #4facfe;
+            border-radius: 4px;
+        }
+        .attraction-card {
+            width: 220px;
+            min-width: 220px;
+            flex-shrink: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        .attraction-card img {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .attraction-card .card-body {
+            padding: 10px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+        }
+        .attraction-card .card-title {
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: #4facfe;
+            margin-bottom: 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .attraction-card .card-text {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+        .attraction-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        }
+        .attraction-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 1200px) {
+            .attraction-card {
+                width: 200px;
+                min-width: 200px;
+            }
+        }
+        @media (max-width: 992px) {
+            .attraction-card {
+                width: 180px;
+                min-width: 180px;
+            }
+        }
+        @media (max-width: 768px) {
+            .attraction-card {
+                width: 160px;
+                min-width: 160px;
+            }
+        }
+
+        /* 页脚优化 */
+        .site-footer {
+            background: linear-gradient(135deg, #f6f8f9 0%, #e5ebee 100%);
+            border-top: 3px solid #4facfe;
+            padding: 40px 0;
+            color: #333;
+        }
+        .site-footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .footer-section {
+            text-align: left;
+            padding: 0 15px;
+        }
+        .footer-section h5 {
+            color: #4facfe;
+            position: relative;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            border-bottom: 2px solid #4facfe;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+        .footer-section ul li a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+        .footer-section ul li a:hover {
+            color: #4facfe;
+            transform: translateX(5px);
+        }
+        .footer-bottom {
+            background-color: rgba(0,0,0,0.05);
+            padding: 15px 0;
+            text-align: center;
+            color: #6c757d;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 992px) {
+            .site-footer .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 576px) {
+            .site-footer .container {
+                grid-template-columns: 1fr;
+            }
+            .footer-section {
+                text-align: center;
+            }
+            .footer-section h5 {
+                text-align: center;
+                border-bottom: 2px solid #4facfe;
+                display: inline-block;
+                padding-bottom: 5px;
+                margin: 0 auto 15px;
+            }
+            .footer-section ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* 返回顶部按钮优化 */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            display: none;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+            outline: none;
+            cursor: pointer;
+            z-index: 1050;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.8;
+        }
+
+        #back-to-top i {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        #back-to-top:hover {
+            opacity: 1;
+            transform: translateY(-10px);
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+
+        #back-to-top:hover i {
+            transform: scale(1.2) rotate(360deg);
+        }
+
+        /* 返回顶部按钮呼吸动画 */
+        @keyframes breathe {
+            0%, 100% { 
+                transform: scale(1) translateY(0); 
+                box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            }
+            50% { 
+                transform: scale(1.05) translateY(-5px); 
+                box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+            }
+        }
+
+        #back-to-top.show {
+            display: flex;
+            animation: breathe 2s infinite;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            #back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+            }
+            #back-to-top i {
+                font-size: 20px;
+            }
+        }
+    
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        
+    <div class="container-fluid px-3">
+        <a class="navbar-brand" href="#">🌈 儿童旅行指南</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cityNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="cityNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#上海">上海</a></li><li class="nav-item"><a class="nav-link" href="#北京">北京</a></li><li class="nav-item"><a class="nav-link" href="#南通">南通</a></li><li class="nav-item"><a class="nav-link" href="#大连">大连</a></li><li class="nav-item"><a class="nav-link" href="#常州">常州</a></li><li class="nav-item"><a class="nav-link" href="#徐州">徐州</a></li><li class="nav-item"><a class="nav-link" href="#成都">成都</a></li><li class="nav-item"><a class="nav-link" href="#扬州">扬州</a></li><li class="nav-item"><a class="nav-link" href="#无锡">无锡</a></li><li class="nav-item"><a class="nav-link" href="#杭州">杭州</a></li><li class="nav-item"><a class="nav-link" href="#枣庄">枣庄</a></li><li class="nav-item"><a class="nav-link" href="#济南">济南</a></li><li class="nav-item"><a class="nav-link" href="#淄博">淄博</a></li><li class="nav-item"><a class="nav-link" href="#淮安">淮安</a></li><li class="nav-item"><a class="nav-link" href="#潍坊">潍坊</a></li><li class="nav-item"><a class="nav-link" href="#苏州">苏州</a></li><li class="nav-item"><a class="nav-link" href="#西安">西安</a></li><li class="nav-item"><a class="nav-link" href="#连云港">连云港</a></li><li class="nav-item"><a class="nav-link" href="#青岛">青岛</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    </nav>
+    
+    <div class="container-fluid px-3 mt-3">
+        
+            <div class="city-section" id="北京">
+                <div class="city-header">
+                    <h2>北京</h2>
+                    <div class="city-description">古都风采，长城故宫，千年文明，现代活力。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/beijing-astronomy-museum.jpg" class="card-img-top" alt="北京天文馆">
+                <div class="card-body">
+                    <h5 class="card-title">北京天文馆</h5>
+                    <p class="card-text">国家级天文科普教育中心，展示宇宙奥秘和天文科技，提供沉浸式天文探索体验</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/beijing-china-science-museum.jpg" class="card-img-top" alt="中国科技馆">
+                <div class="card-body">
+                    <h5 class="card-title">中国科技馆</h5>
+                    <p class="card-text">国家级科普教育基地，展示中国科技创新成就，提供互动性强的科学体验</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/tiananmen.jpg" class="card-img-top" alt="天安门广场">
+                <div class="card-body">
+                    <h5 class="card-title">天安门广场</h5>
+                    <p class="card-text">中国政治中心和重要的历史象征</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/beijing-military-museum.jpg" class="card-img-top" alt="军事博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">军事博物馆</h5>
+                    <p class="card-text">展示中国军事历史和现代国防成就的重要场所，收藏丰富的军事文物</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/museum.jpg" class="card-img-top" alt="国家博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">国家博物馆</h5>
+                    <p class="card-text">展示中国历史文化的重要场所</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="上海">
+                <div class="city-header">
+                    <h2>上海</h2>
+                    <div class="city-description">魔都风情，外滩浦东，中西合璧，国际大都市。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/waitan.jpg" class="card-img-top" alt="外滩">
+                <div class="card-body">
+                    <h5 class="card-title">外滩</h5>
+                    <p class="card-text">上海最著名的城市景观，展现近代建筑风貌</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/dongfangmingzhu.jpg" class="card-img-top" alt="东方明珠">
+                <div class="card-body">
+                    <h5 class="card-title">东方明珠</h5>
+                    <p class="card-text">上海标志性建筑，可以俯瞰整个城市</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/disneyland.jpg" class="card-img-top" alt="迪士尼乐园">
+                <div class="card-body">
+                    <h5 class="card-title">迪士尼乐园</h5>
+                    <p class="card-text">世界知名主题公园，适合儿童游玩</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/chenghuangmiao.jpg" class="card-img-top" alt="城隍庙">
+                <div class="card-body">
+                    <h5 class="card-title">城隍庙</h5>
+                    <p class="card-text">传统的中国古老庙宇，充满文化氛围</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/shanghai-wild-zoo.jpg" class="card-img-top" alt="上海野生动物园">
+                <div class="card-body">
+                    <h5 class="card-title">上海野生动物园</h5>
+                    <p class="card-text">拥有丰富动物种类的大型现代动物园，适合亲子游览</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="成都">
+                <div class="city-header">
+                    <h2>成都</h2>
+                    <div class="city-description">熊猫故乡，美食天堂，慢生活，巴蜀文化。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/dujiangyan.jpg" class="card-img-top" alt="都江堰">
+                <div class="card-body">
+                    <h5 class="card-title">都江堰</h5>
+                    <p class="card-text">世界文化遗产，中国古代水利工程的杰出代表，展现中国古代科技智慧</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/sanxingdui.jpg" class="card-img-top" alt="三星堆">
+                <div class="card-body">
+                    <h5 class="card-title">三星堆</h5>
+                    <p class="card-text">中国古代巴蜀文明的重要考古遗址，展示神秘的古蜀文化</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/chengdu-jinsha-museum.jpg" class="card-img-top" alt="金沙遗址博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">金沙遗址博物馆</h5>
+                    <p class="card-text">展示古蜀文明的重要考古遗址博物馆，保存和展示珍贵的古蜀文化文物</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/wuhouci.jpg" class="card-img-top" alt="武侯祠">
+                <div class="card-body">
+                    <h5 class="card-title">武侯祠</h5>
+                    <p class="card-text">三国文化的重要遗址，纪念诸葛亮</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/jinli.jpg" class="card-img-top" alt="锦里古街">
+                <div class="card-body">
+                    <h5 class="card-title">锦里古街</h5>
+                    <p class="card-text">展现成都传统生活文化的历史街区</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="杭州">
+                <div class="city-header">
+                    <h2>杭州</h2>
+                    <div class="city-description">西湖美景，运河文化，诗画江南，休闲胜地。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/xihu.jpg" class="card-img-top" alt="西湖">
+                <div class="card-body">
+                    <h5 class="card-title">西湖</h5>
+                    <p class="card-text">中国最美的湖泊，世界文化遗产</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/lingyin.jpg" class="card-img-top" alt="灵隐寺">
+                <div class="card-body">
+                    <h5 class="card-title">灵隐寺</h5>
+                    <p class="card-text">千年古刹，风景优美</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/qinghe-fang.jpg" class="card-img-top" alt="清河坊">
+                <div class="card-body">
+                    <h5 class="card-title">清河坊</h5>
+                    <p class="card-text">杭州著名的历史文化街区，保留了宋代风貌的老街</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/xihu-museum.jpg" class="card-img-top" alt="西湖博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">西湖博物馆</h5>
+                    <p class="card-text">展示西湖历史文化的重要场所</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/feilaifeng.jpg" class="card-img-top" alt="飞来峰">
+                <div class="card-body">
+                    <h5 class="card-title">飞来峰</h5>
+                    <p class="card-text">灵隐景区内的著名石刻景点</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="苏州">
+                <div class="city-header">
+                    <h2>苏州</h2>
+                    <div class="city-description">园林之城，水乡风情，园林精致，古韵悠长。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/zhuozheng.jpg" class="card-img-top" alt="拙政园">
+                <div class="card-body">
+                    <h5 class="card-title">拙政园</h5>
+                    <p class="card-text">中国最著名的园林之一，世界文化遗产</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/huqiu.jpg" class="card-img-top" alt="虎丘">
+                <div class="card-body">
+                    <h5 class="card-title">虎丘</h5>
+                    <p class="card-text">历史悠久的名胜古迹</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/garden-museum.jpg" class="card-img-top" alt="苏州园林博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">苏州园林博物馆</h5>
+                    <p class="card-text">展示苏州园林历史的重要场所</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/panmen.jpg" class="card-img-top" alt="盘门">
+                <div class="card-body">
+                    <h5 class="card-title">盘门</h5>
+                    <p class="card-text">苏州古城墙的重要遗迹</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/zhouzhuang.jpg" class="card-img-top" alt="周庄">
+                <div class="card-body">
+                    <h5 class="card-title">周庄</h5>
+                    <p class="card-text">江南水乡最著名的古镇，被誉为'中国第一水乡'</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="西安">
+                <div class="city-header">
+                    <h2>西安</h2>
+                    <div class="city-description">古都风采，兵马俑，丝绸之路起点，历史文明之城。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/bingmayong.jpg" class="card-img-top" alt="兵马俑">
+                <div class="card-body">
+                    <h5 class="card-title">兵马俑</h5>
+                    <p class="card-text">世界八大奇迹之一，秦始皇陵墓兵马俑博物馆</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/beilin-museum.jpg" class="card-img-top" alt="碑林博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">碑林博物馆</h5>
+                    <p class="card-text">收藏众多历史石碑的著名博物馆，展示中国书法和历史文化</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/shaanxi-history-museum.jpg" class="card-img-top" alt="陕西历史博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">陕西历史博物馆</h5>
+                    <p class="card-text">中国最大的省级历史博物馆，展示丰富的陕西历史文化遗产</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/huimingjie.jpg" class="card-img-top" alt="回民街">
+                <div class="card-body">
+                    <h5 class="card-title">回民街</h5>
+                    <p class="card-text">品尝西安美食的著名美食街</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/zhonggulou.jpg" class="card-img-top" alt="钟鼓楼">
+                <div class="card-body">
+                    <h5 class="card-title">钟鼓楼</h5>
+                    <p class="card-text">古代城市中心，标志性建筑</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="无锡">
+                <div class="city-header">
+                    <h2>无锡</h2>
+                    <div class="city-description">太湖之滨，灵山大佛，江南水乡的诗意栖居。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/taihu.jpg" class="card-img-top" alt="太湖">
+                <div class="card-body">
+                    <h5 class="card-title">太湖</h5>
+                    <p class="card-text">中国第三大淡水湖，风景优美</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/lingshan-buddha.jpg" class="card-img-top" alt="灵山大佛">
+                <div class="card-body">
+                    <h5 class="card-title">灵山大佛</h5>
+                    <p class="card-text">世界最高的青铜坐佛</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/wuxi-ancient-canal.jpg" class="card-img-top" alt="古运河历史文化街区">
+                <div class="card-body">
+                    <h5 class="card-title">古运河历史文化街区</h5>
+                    <p class="card-text">保存完好的江南水乡历史文化街区，展现无锡传统建筑和生活风貌</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/fanggong.jpg" class="card-img-top" alt="梵宫">
+                <div class="card-body">
+                    <h5 class="card-title">梵宫</h5>
+                    <p class="card-text">无锡著名的佛教文化建筑，融合现代建筑与传统佛教艺术</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/meiyuan.jpg" class="card-img-top" alt="梅园">
+                <div class="card-body">
+                    <h5 class="card-title">梅园</h5>
+                    <p class="card-text">以梅花闻名的园林景点</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="青岛">
+                <div class="city-header">
+                    <h2>青岛</h2>
+                    <div class="city-description">海滨城市，啤酒之都，海鲜美食，欧陆风情。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/qingdao-rongchuang-waterpark.jpg" class="card-img-top" alt="融创水世界">
+                <div class="card-body">
+                    <h5 class="card-title">融创水世界</h5>
+                    <p class="card-text">大型现代化水上主题乐园，提供丰富的水上娱乐和休闲体验</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/qingdao-forest-wildlife-zoo.jpg" class="card-img-top" alt="青岛森林野生动物园">
+                <div class="card-body">
+                    <h5 class="card-title">青岛森林野生动物园</h5>
+                    <p class="card-text">现代化野生动物保护和科普教育基地，提供近距离观察和了解野生动物的独特体验</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/qingdao-laoshan-beijijiushui.jpg" class="card-img-top" alt="崂山北九水">
+                <div class="card-body">
+                    <h5 class="card-title">崂山北九水</h5>
+                    <p class="card-text">青岛著名的自然风景区，以秀丽的山水景观和独特的地质地貌闻名</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/qingdao-polar-ocean-world.jpg" class="card-img-top" alt="极地海洋世界">
+                <div class="card-body">
+                    <h5 class="card-title">极地海洋世界</h5>
+                    <p class="card-text">展示极地动物生态和海洋科普的现代化主题公园</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/qingdao-fangte-dreamland.jpg" class="card-img-top" alt="方特梦幻王国">
+                <div class="card-body">
+                    <h5 class="card-title">方特梦幻王国</h5>
+                    <p class="card-text">大型主题游乐园，融合科技、娱乐和奇幻元素，适合全家游玩</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="济南">
+                <div class="city-header">
+                    <h2>济南</h2>
+                    <div class="city-description">泉城风光，大明湖畔，泉水之城，历史文化名城。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/jinan-shandong-art-museum.jpg" class="card-img-top" alt="山东美术馆">
+                <div class="card-body">
+                    <h5 class="card-title">山东美术馆</h5>
+                    <p class="card-text">展示山东艺术发展历程和当代艺术成就的重要文化场所，收藏众多珍贵艺术作品</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/daminghu.jpg" class="card-img-top" alt="大明湖">
+                <div class="card-body">
+                    <h5 class="card-title">大明湖</h5>
+                    <p class="card-text">历史悠久的城市湖泊</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/jinan-shandong-museum.jpg" class="card-img-top" alt="山东博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">山东博物馆</h5>
+                    <p class="card-text">展示山东丰富历史文化和自然遗产的重要文化场所，收藏大量珍贵文物</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/jinan-wild-zoo.jpg" class="card-img-top" alt="济南野生动物园">
+                <div class="card-body">
+                    <h5 class="card-title">济南野生动物园</h5>
+                    <p class="card-text">拥有丰富动物种类的现代化野生动物园，提供亲近自然、了解野生动物的独特体验</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/heitigerquan.jpg" class="card-img-top" alt="黑虎泉">
+                <div class="card-body">
+                    <h5 class="card-title">黑虎泉</h5>
+                    <p class="card-text">另一处著名的泉水景观</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="常州">
+                <div class="city-header">
+                    <h2>常州</h2>
+                    <div class="city-description">恐龙主题公园，历史文化名城，充满童趣。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/dinosaur-park.jpg" class="card-img-top" alt="恐龙园">
+                <div class="card-body">
+                    <h5 class="card-title">恐龙园</h5>
+                    <p class="card-text">世界级主题公园，适合儿童探索恐龙世界</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/tianning-temple.jpg" class="card-img-top" alt="天宁寺">
+                <div class="card-body">
+                    <h5 class="card-title">天宁寺</h5>
+                    <p class="card-text">历史悠久的佛教寺庙</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/tea-museum.jpg" class="card-img-top" alt="中国茶文化博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">中国茶文化博物馆</h5>
+                    <p class="card-text">了解中国茶文化的重要场所</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/yanchen-wild-zoo.jpg" class="card-img-top" alt="淹城野生动物园">
+                <div class="card-body">
+                    <h5 class="card-title">淹城野生动物园</h5>
+                    <p class="card-text">拥有丰富动物种类的现代化动物园，适合亲子游览</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/changzhou-museum.jpg" class="card-img-top" alt="常州博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">常州博物馆</h5>
+                    <p class="card-text">展示常州历史文化的重要场所</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="大连">
+                <div class="city-header">
+                    <h2>大连</h2>
+                    <div class="city-description">海港城市，俄式风情，海洋公园，滨海风光。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/dalian-russian-style-street.jpg" class="card-img-top" alt="俄罗斯风情街">
+                <div class="card-body">
+                    <h5 class="card-title">俄罗斯风情街</h5>
+                    <p class="card-text">展现大连独特历史文化底蕴的特色街区，体现俄罗斯建筑风格和文化元素</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/tiger-beach.jpg" class="card-img-top" alt="老虎滩海洋公园">
+                <div class="card-body">
+                    <h5 class="card-title">老虎滩海洋公园</h5>
+                    <p class="card-text">世界著名的海洋主题公园</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/dalian-oriental-venice.jpg" class="card-img-top" alt="东方威尼斯水城">
+                <div class="card-body">
+                    <h5 class="card-title">东方威尼斯水城</h5>
+                    <p class="card-text">融合现代建筑与水乡风情的特色景区，展现独特的城市水景和文化魅力</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/dalian-discovery-kingdom.jpg" class="card-img-top" alt="发现王国主题公园">
+                <div class="card-body">
+                    <h5 class="card-title">发现王国主题公园</h5>
+                    <p class="card-text">大型现代化主题游乐园，融合科技、娱乐和探险元素，提供全家互动体验</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/forest-zoo.jpg" class="card-img-top" alt="森林动物园">
+                <div class="card-body">
+                    <h5 class="card-title">森林动物园</h5>
+                    <p class="card-text">适合儿童游玩的动物园</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="南通">
+                <div class="city-header">
+                    <h2>南通</h2>
+                    <div class="city-description">长江之滨，近代工业发源地，江海交汇处。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/nantong-yangtze-riverside.jpg" class="card-img-top" alt="南通长江沿岸">
+                <div class="card-body">
+                    <h5 class="card-title">南通长江沿岸</h5>
+                    <p class="card-text">展现长江经济带风貌的城市滨水景观，体现南通的自然风光和城市发展</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/nantong-agricultural-logistics-center.jpg" class="card-img-top" alt="南通农副产品物流中心">
+                <div class="card-body">
+                    <h5 class="card-title">南通农副产品物流中心</h5>
+                    <p class="card-text">展示现代农业物流体系和农产品交易的重要场所，体现南通农业经济发展特色</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/langshan.jpg" class="card-img-top" alt="狼山景区">
+                <div class="card-body">
+                    <h5 class="card-title">狼山景区</h5>
+                    <p class="card-text">风景优美的山地景区</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/nantong-science-museum.jpg" class="card-img-top" alt="南通科技馆">
+                <div class="card-body">
+                    <h5 class="card-title">南通科技馆</h5>
+                    <p class="card-text">适合儿童科普教育的场所</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/qidong-seaside.jpg" class="card-img-top" alt="启东海滨旅游区">
+                <div class="card-body">
+                    <h5 class="card-title">启东海滨旅游区</h5>
+                    <p class="card-text">海边度假胜地，适合亲子游</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="徐州">
+                <div class="city-header">
+                    <h2>徐州</h2>
+                    <div class="city-description">汉楚文化交汇地，云龙湖畔，历史文化名城。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/yunlonghu.jpg" class="card-img-top" alt="云龙湖">
+                <div class="card-body">
+                    <h5 class="card-title">云龙湖</h5>
+                    <p class="card-text">城市中心的大型湖泊景区</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/xuzhou-zhongshu-pavilion.jpg" class="card-img-top" alt="钟书阁">
+                <div class="card-body">
+                    <h5 class="card-title">钟书阁</h5>
+                    <p class="card-text">徐州著名的文化地标，集书店、咖啡馆和文化空间于一体的现代阅读空间</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/xuzhou-han-relief-museum.jpg" class="card-img-top" alt="汉画像石艺术馆">
+                <div class="card-body">
+                    <h5 class="card-title">汉画像石艺术馆</h5>
+                    <p class="card-text">展示徐州独特汉代画像石艺术的重要文化场所，保存了大量珍贵的汉代石刻艺术品</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/xuzhou-xima-platform.jpg" class="card-img-top" alt="戏马台">
+                <div class="card-body">
+                    <h5 class="card-title">戏马台</h5>
+                    <p class="card-text">徐州著名的历史文化遗址，见证了楚汉争霸时期的重要历史场景</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/baolian-temple.jpg" class="card-img-top" alt="宝莲寺">
+                <div class="card-body">
+                    <h5 class="card-title">宝莲寺</h5>
+                    <p class="card-text">徐州著名的佛教寺庙，历史悠久，建筑精美</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="潍坊">
+                <div class="city-header">
+                    <h2>潍坊</h2>
+                    <div class="city-description">风筝之乡，民俗文化，现代化工业城市。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/qingzhou-ancient-city.jpg" class="card-img-top" alt="青州古城">
+                <div class="card-body">
+                    <h5 class="card-title">青州古城</h5>
+                    <p class="card-text">保存完好的历史文化名城</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/weifang-kite-museum.jpg" class="card-img-top" alt="潍坊风筝博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">潍坊风筝博物馆</h5>
+                    <p class="card-text">展示中国风筝文化的重要场所</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/weifang-changshan-cultural-museum.jpg" class="card-img-top" alt="常山文化博物苑">
+                <div class="card-body">
+                    <h5 class="card-title">常山文化博物苑</h5>
+                    <p class="card-text">展示潍坊地方文化历史的重要场所，保存和展示当地丰富的文化遗产</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/bailang-river.jpg" class="card-img-top" alt="白浪河风景区">
+                <div class="card-body">
+                    <h5 class="card-title">白浪河风景区</h5>
+                    <p class="card-text">城市中的自然景观</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/zhucheng-wild-zoo.jpg" class="card-img-top" alt="诸城野生动物园">
+                <div class="card-body">
+                    <h5 class="card-title">诸城野生动物园</h5>
+                    <p class="card-text">拥有丰富动物种类的现代化动物园，适合亲子游览</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="淮安">
+                <div class="city-header">
+                    <h2>淮安</h2>
+                    <div class="city-description">水城风情，淮扬文化，运河古城，诗意栖居。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/huaian-museum.jpg" class="card-img-top" alt="淮安博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">淮安博物馆</h5>
+                    <p class="card-text">展示淮安丰富历史文化的重要场所，收藏大量珍贵文物和历史遗迹</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/zhou-enlai-memorial.jpg" class="card-img-top" alt="周恩来纪念馆">
+                <div class="card-body">
+                    <h5 class="card-title">周恩来纪念馆</h5>
+                    <p class="card-text">纪念伟大政治家周恩来的重要场所</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/shuihu-city.jpg" class="card-img-top" alt="淮安水浒城">
+                <div class="card-body">
+                    <h5 class="card-title">淮安水浒城</h5>
+                    <p class="card-text">以水浒传故事为主题的文化景区</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/huaian-xiyou-park.jpg" class="card-img-top" alt="西游乐园">
+                <div class="card-body">
+                    <h5 class="card-title">西游乐园</h5>
+                    <p class="card-text">以西游记为主题的大型文化娱乐园，融合神话故事和现代游乐体验</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/huaian-government-office.jpg" class="card-img-top" alt="淮安府署">
+                <div class="card-body">
+                    <h5 class="card-title">淮安府署</h5>
+                    <p class="card-text">保存完好的清代地方行政衙门，展现古代官府建筑风貌</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="枣庄">
+                <div class="city-header">
+                    <h2>枣庄</h2>
+                    <div class="city-description">矿业文化发源地，山东运河文化中心。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/taierzhuang-ancient-city.jpg" class="card-img-top" alt="台儿庄古城">
+                <div class="card-body">
+                    <h5 class="card-title">台儿庄古城</h5>
+                    <p class="card-text">保存完好的历史文化名城，抗日战争重要战场</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/shanting-geological-park.jpg" class="card-img-top" alt="山亭区地质公园">
+                <div class="card-body">
+                    <h5 class="card-title">山亭区地质公园</h5>
+                    <p class="card-text">展示独特地质景观的自然保护区</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/zaozhuang-canal-museum.jpg" class="card-img-top" alt="枣庄运河博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">枣庄运河博物馆</h5>
+                    <p class="card-text">展示运河文化历史的重要博物馆</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/zaozhuang-museum.jpg" class="card-img-top" alt="枣庄市博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">枣庄市博物馆</h5>
+                    <p class="card-text">了解枣庄历史文化的重要场所</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/xuecheng-mining-park.jpg" class="card-img-top" alt="薛城矿业文化园">
+                <div class="card-body">
+                    <h5 class="card-title">薛城矿业文化园</h5>
+                    <p class="card-text">展示矿业历史和文化的主题景区</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="连云港">
+                <div class="city-header">
+                    <h2>连云港</h2>
+                    <div class="city-description">海滨城市，丝绸之路海上起点，现代港口。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/haizhou-bay.jpg" class="card-img-top" alt="海州湾景区">
+                <div class="card-body">
+                    <h5 class="card-title">海州湾景区</h5>
+                    <p class="card-text">滨海风景优美的自然景观</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/yuntai-mountain.jpg" class="card-img-top" alt="云台山景区">
+                <div class="card-body">
+                    <h5 class="card-title">云台山景区</h5>
+                    <p class="card-text">国家重点风景名胜区，自然景观独特</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/huaguo-mountain.jpg" class="card-img-top" alt="花果山风景区">
+                <div class="card-body">
+                    <h5 class="card-title">花果山风景区</h5>
+                    <p class="card-text">神话传说中孙悟空的诞生地</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/lianyungang-marine-museum.jpg" class="card-img-top" alt="连云港海洋博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">连云港海洋博物馆</h5>
+                    <p class="card-text">展示海洋文化和生态的重要场所</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/shihu-wetland.jpg" class="card-img-top" alt="灌云石湖湿地公园">
+                <div class="card-body">
+                    <h5 class="card-title">灌云石湖湿地公园</h5>
+                    <p class="card-text">生态保护区，适合亲近自然</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="淄博">
+                <div class="city-header">
+                    <h2>淄博</h2>
+                    <div class="city-description">陶瓷文化之都，齐文化发源地，工业重镇。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/zibo-haidai-building.jpg" class="card-img-top" alt="海岱楼">
+                <div class="card-body">
+                    <h5 class="card-title">海岱楼</h5>
+                    <p class="card-text">淄博著名的历史文化建筑，展现了地方特色的建筑艺术和历史风貌</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/zhangdian-qi-city.jpg" class="card-img-top" alt="张店齐国故城">
+                <div class="card-body">
+                    <h5 class="card-title">张店齐国故城</h5>
+                    <p class="card-text">春秋时期齐国的历史遗址</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/zibo-ceramic-museum.jpg" class="card-img-top" alt="淄博陶瓷博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">淄博陶瓷博物馆</h5>
+                    <p class="card-text">展示陶瓷文化历史的重要场所</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/zibo-museum.jpg" class="card-img-top" alt="淄博市博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">淄博市博物馆</h5>
+                    <p class="card-text">了解淄博历史文化的重要场所</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/chaijiazhuang-site.jpg" class="card-img-top" alt="柴家庄遗址公园">
+                <div class="card-body">
+                    <h5 class="card-title">柴家庄遗址公园</h5>
+                    <p class="card-text">新石器时代遗址，展示原始文明</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+            <div class="city-section" id="扬州">
+                <div class="city-header">
+                    <h2>扬州</h2>
+                    <div class="city-description">园林之城，瘦西湖，盐商文化，江南韵味。</div>
+                </div>
+                <div class="attractions-container">
+                    
+            <div class="card attraction-card">
+                <img src="https://example.com/yangzhou-slimwestlake.jpg" class="card-img-top" alt="瘦西湖">
+                <div class="card-body">
+                    <h5 class="card-title">瘦西湖</h5>
+                    <p class="card-text">国家5A级景区，以细长优美的湖景和园林艺术闻名</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/yangzhou-damingsi.jpg" class="card-img-top" alt="大明寺">
+                <div class="card-body">
+                    <h5 class="card-title">大明寺</h5>
+                    <p class="card-text">历史悠久的佛教寺庙，保存了丰富的文化遗产</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/yangzhou-heyuan.jpg" class="card-img-top" alt="何园">
+                <div class="card-body">
+                    <h5 class="card-title">何园</h5>
+                    <p class="card-text">江南著名的古典园林，展现精美的园林建筑艺术</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/yangzhou-dongguanjie.jpg" class="card-img-top" alt="东关街">
+                <div class="card-body">
+                    <h5 class="card-title">东关街</h5>
+                    <p class="card-text">保存完好的历史文化街区，展现扬州传统生活风貌</p>
+                </div>
+            </div>
+            
+            <div class="card attraction-card">
+                <img src="https://example.com/yangzhou-grand-canal-museum.jpg" class="card-img-top" alt="大运河博物馆">
+                <div class="card-body">
+                    <h5 class="card-title">大运河博物馆</h5>
+                    <p class="card-text">展示大运河历史文化和水运发展的重要文化场所，保护和传承大运河文明</p>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+    </div>
+    
+    <button id="back-to-top" title="返回顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var backToTopButton = document.getElementById('back-to-top');
+        
+        // 显示/隐藏返回顶部按钮
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        // 点击返回顶部
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+    </script>
+    
+    
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-section">
+                <h5>关于我们</h5>
+                <ul>
+                    <li><a href="#">网站简介</a></li>
+                    <li><a href="#">团队介绍</a></li>
+                    <li><a href="#">联系方式</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>旅游资源</h5>
+                <ul>
+                    <li><a href="#">城市导航</a></li>
+                    <li><a href="#">景点推荐</a></li>
+                    <li><a href="#">旅游攻略</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>用户服务</h5>
+                <ul>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">意见反馈</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>关注我们</h5>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">微博</a></li>
+                    <li><a href="#">抖音</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 儿童旅游网. 版权所有 | 京ICP备12345678号
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
